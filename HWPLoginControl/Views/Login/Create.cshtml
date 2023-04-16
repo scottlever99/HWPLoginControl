@@ -1,0 +1,72 @@
+﻿@model CreateAccount
+@{
+    ViewData["Title"] = "Create Account";
+    bool showInvalidPassword = ViewBag.PasswordInvalid;
+    bool showUserAlreadyExists = ViewBag.UserAlreadyExists;
+    bool showCreationFailed = ViewBag.CreationFailed;
+}
+
+
+
+<div class="divwrapper" style="display:flex; justify-content: center; margin-top:50px">
+    <div class="form">
+            @using (Html.BeginForm("Create", "Login", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+        <div class="title">Welcome</div>
+        <div class="subtitle">Let's create your account!</div>
+
+        <div class="input-container ic1">
+                    @Html.TextBoxFor(t => t.FirstName, new { @class = "input", @placeholder = " ", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                @if (showCreationFailed)
+                {
+                    <label>Failed to create account</label>
+                }
+            <div class="cut"></div>
+                    <label for="FirstName" class="placeholder">First name</label>
+                
+        </div>
+        <div class="input-container ic2">
+                    @Html.TextBoxFor(t => t.LastName, new { @class = "input", @placeholder = " ", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.LastName)
+            <div class="cut"></div>
+                    <label for="LastName" class="placeholder">Last name</label>
+
+        </div>
+
+        <div class="input-container ic2">
+                    @Html.TextBoxFor(t => t.Email, new { @class = "input", @placeholder = " ", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.Email)
+                @if (showUserAlreadyExists)
+                {
+                    <label>This user already exists</label>
+                }
+            <div class="cut cut-short"></div>
+                    <label for="Email" class="placeholder">Email</label>
+
+        </div>
+
+            <div class="input-container ic2">
+                    @Html.TextBoxFor(t => t.Password, new { @class = "input", @placeholder = " ", @type = "password", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                    @if (showInvalidPassword)
+                    {
+                        <label>Must contain at least 1 upper, 1 lower & 1 number</label>
+                    }
+                    <div class="cut cut-pass"></div>
+                    <label for="Password" class="placeholder">Password</label>
+
+            </div>
+
+            <div class="input-container ic2">
+                    @Html.TextBoxFor(t => t.ConfirmPassword, new { @class = "input", @placeholder = " ", @type = "password", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                <div class="cut cut-confirmpass"></div>
+                    <label for="ConfirmPassword" class="placeholder">Confirm Password</label>
+
+            </div>
+        <input type="submit" class="submit" value="Create"/>
+        }
+    </div>
+</div>
