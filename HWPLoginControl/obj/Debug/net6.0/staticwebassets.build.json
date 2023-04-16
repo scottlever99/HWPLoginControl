@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Kd1t1LmDXv0Sntb5HMeyqAQcu50MEZjAlSeywc4ACWw=",
+  "Hash": "mkh+9ZZADMW0UIjaHLdWeh3xBoOl+e8Z/uTMmu+Y9TE=",
   "Source": "HWPLoginControl",
   "BasePath": "_content/HWPLoginControl",
   "Mode": "Default",
@@ -1103,23 +1103,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\muscleicon.ico"
-    },
-    {
-      "Identity": "C:\\Work\\Source Control\\HWPLoginControl\\HWPLoginControl\\wwwroot\\oldicon.ico",
-      "SourceId": "HWPLoginControl",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Work\\Source Control\\HWPLoginControl\\HWPLoginControl\\wwwroot\\",
-      "BasePath": "_content/HWPLoginControl",
-      "RelativePath": "oldicon.ico",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\oldicon.ico"
     }
   ]
 }

@@ -73,7 +73,8 @@ body {
 
 .input {
     /*background-color: #42454D;*/
-    background-color: #DADADA;
+/*    background-color: #DADADA;*/
+    background-color: white;
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
@@ -127,7 +128,8 @@ body {
     transition: transform 200ms, color 200ms;
     top: 20px;
     /*background-color: #42454D;*/
-    background-color: #DADADA;
+    /*background-color: #DADADA;*/
+    background-color: white;
     opacity: 1;
 }
 

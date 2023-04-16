@@ -2,17 +2,9 @@
 
 namespace HWPLoginControl.Models
 {
-    public class CreateAccount
+    public class ForgottenPassword
     {
-        [Required(ErrorMessage = "First Name Is Required")]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "Last Name Is Required")]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessage = "Email Is Required")]
-        [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Required(ErrorMessage = "Password Is Required")]
         [DataType(DataType.Password)]
@@ -23,5 +15,6 @@ namespace HWPLoginControl.Models
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The passwords do not match")]
         public string ConfirmPassword { get; set; }
+
     }
 }

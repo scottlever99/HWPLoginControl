@@ -13,11 +13,11 @@ namespace HWPLoginControl.Service
             _dbAccess = dbAccess;
         }
 
-        public async Task<bool> UserAlreadyExists(CreateAccount model)
+        public async Task<bool> UserAlreadyExists(string email)
         {
             try
             {
-                var result = await _dbAccess.LoadData<User, dynamic>("SELECT * FROM user WHERE email = @Email", new { Email = model.Email });
+                var result = await _dbAccess.LoadData<User, dynamic>("SELECT * FROM user WHERE email = @Email", new { Email = email });
                 if (result == null || result.Count() < 1)
                 {
                     return false;
@@ -46,6 +46,27 @@ namespace HWPLoginControl.Service
 
                 if (result == null || result < 1) return false;
                 
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdatePassword(string email, string password)
+        {
+            try
+            {
+                var result = await _dbAccess.SaveData<dynamic>("UPDATE user SET password = @Password WHERE email = @Email",
+                    new
+                    {
+                        Email = email,
+                        Password = password
+                    });
+
+                if (result == null || result < 1) return false;
+
                 return true;
             }
             catch
