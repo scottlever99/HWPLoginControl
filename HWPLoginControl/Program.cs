@@ -1,12 +1,12 @@
 using HWPLoginControl.Data;
-using HWPLoginControl.Service;
+using HWPLoginControl.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<EncryptionService>();
 builder.Services.AddScoped<IDataAccess, DataAccess>();
-
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())

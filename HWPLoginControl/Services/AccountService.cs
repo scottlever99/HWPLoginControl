@@ -1,16 +1,22 @@
 ﻿using HWPLoginControl.Data;
 using HWPLoginControl.Data.Models;
 using HWPLoginControl.Models;
+using Org.BouncyCastle.Utilities.Encoders;
+using System.Globalization;
+using System.Text;
+using System.Web;
 
-namespace HWPLoginControl.Service
+namespace HWPLoginControl.Services
 {
     public class AccountService
     {
         private readonly IDataAccess _dbAccess;
+        private readonly EncryptionService _encryptionService;
 
-        public AccountService(IDataAccess dbAccess)
+        public AccountService(IDataAccess dbAccess, EncryptionService encryptionService)
         {
             _dbAccess = dbAccess;
+            _encryptionService = encryptionService;
         }
 
         public async Task<bool> UserAlreadyExists(string email)
@@ -44,7 +50,7 @@ namespace HWPLoginControl.Service
                         Age = 0
                     });
 
-                if (result == null || result < 1) return false;
+                if (result < 1) return false;
                 
                 return true;
             }
@@ -65,9 +71,42 @@ namespace HWPLoginControl.Service
                         Password = password
                     });
 
-                if (result == null || result < 1) return false;
+                if (result < 1) return false;
 
                 return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public string GetForgottenPasswordToken(string email)
+        {
+            var encyrptString = _encryptionService.Encrypt(email);
+
+            return encyrptString;
+        }
+
+        public string GetEmailFromString(string cypherText)
+        {
+            var decryptString = _encryptionService.Decrypt(cypherText);
+
+            return decryptString;
+        }
+
+        public bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false;
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
             }
             catch
             {

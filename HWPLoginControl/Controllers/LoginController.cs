@@ -1,5 +1,5 @@
 ﻿using HWPLoginControl.Models;
-using HWPLoginControl.Service;
+using HWPLoginControl.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HWPLoginControl.Controllers
@@ -50,7 +50,7 @@ namespace HWPLoginControl.Controllers
                 ViewBag.UserAlreadyExists = true;
                 return View(model);
             }
-                
+
             if (!await _accountService.CreateAccount(model))
             {
                 ViewBag.CreationFailed = true;
@@ -65,13 +65,20 @@ namespace HWPLoginControl.Controllers
             return View();
         }
 
-        public IActionResult ForgottenPassword()
+        public IActionResult ForgottenPassword(string? token)
         {
             ViewBag.Failed = false;
             ViewBag.PasswordInvalid = false;
 
+            if (String.IsNullOrEmpty(token)) return NotFound();
+
+            var email = "22@22.22";
+            var tempEmail = _accountService.GetEmailFromString(token);
+            if (String.IsNullOrEmpty(tempEmail)) return NotFound();
+            if (_accountService.IsValidEmail(tempEmail)) email = tempEmail;
+
             var model = new ForgottenPassword();
-            model.Email = "test@test.com";
+            model.Email = email;
             return View(model);
         }
 
@@ -101,6 +108,8 @@ namespace HWPLoginControl.Controllers
         public IActionResult ForgottenPasswordEmail()
         {
             ViewBag.InvalidEmail = false;
+            ViewBag.TempLink = "";
+            ViewBag.Sent = false;
             return View();
         }
 
@@ -108,14 +117,20 @@ namespace HWPLoginControl.Controllers
         public async Task<IActionResult> ForgottenPasswordEmail(ForgottenPasswordEmail model)
         {
             ViewBag.InvalidEmail = false;
+            ViewBag.TempLink = "";
+            ViewBag.Sent = false;
 
             if (!ModelState.IsValid) return View(model);
 
-            if (!await _accountService.UserAlreadyExists(model.Email))
-            {
-                ViewBag.InvalidEmail = true;
-                return View(model);
-            }
+            //if (!await _accountService.UserAlreadyExists(model.Email))
+            //{
+            //    ViewBag.InvalidEmail = true;
+            //    return View(model);
+            //}
+
+            var urlstring = _accountService.GetForgottenPasswordToken(model.Email);
+            ViewBag.TempLink = urlstring;
+            ViewBag.Sent = true;
 
             return View(model);
         }
