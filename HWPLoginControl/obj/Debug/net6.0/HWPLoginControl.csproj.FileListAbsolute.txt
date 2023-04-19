@@ -69,3 +69,7 @@ C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsof
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Azure.Communication.Email.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Azure.Core.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\System.Memory.Data.dll

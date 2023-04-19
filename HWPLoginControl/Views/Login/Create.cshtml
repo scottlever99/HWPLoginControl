@@ -4,6 +4,7 @@
     bool showInvalidPassword = ViewBag.PasswordInvalid;
     bool showUserAlreadyExists = ViewBag.UserAlreadyExists;
     bool showCreationFailed = ViewBag.CreationFailed;
+    bool success = ViewBag.Success;
 }
 
 
@@ -66,7 +67,18 @@
                     <label for="ConfirmPassword" class="placeholder">Confirm Password</label>
 
             </div>
-        <input type="submit" class="submit" value="Create"/>
+
+            @if (!success)
+            {
+                <input type="submit" class="submit" value="Create" />
+
+            }
+            else
+            {
+                <div style="display:flex; justify-content:center; padding-top:15px">
+                    <label>Account Created!</label>
+                </div>
+            }
         }
     </div>
 </div>

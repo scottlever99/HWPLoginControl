@@ -1,4 +1,6 @@
-﻿using HWPLoginControl.Models;
+﻿using Azure;
+using Azure.Communication.Email;
+using HWPLoginControl.Models;
 using HWPLoginControl.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,10 +9,12 @@ namespace HWPLoginControl.Controllers
     public class LoginController : Controller
     {
         private readonly AccountService _accountService;
+        private readonly EmailService _emailService;
 
-        public LoginController(AccountService accountService)
+        public LoginController(AccountService accountService, EmailService emailService)
         {
             _accountService = accountService;
+            _emailService = emailService;
         }
 
         public IActionResult Index()
@@ -23,6 +27,7 @@ namespace HWPLoginControl.Controllers
             ViewBag.PasswordInvalid = false;
             ViewBag.UserAlreadyExists = false;
             ViewBag.CreationFailed = false;
+            ViewBag.Success = false;
 
             return View(new CreateAccount());
         }
@@ -33,6 +38,7 @@ namespace HWPLoginControl.Controllers
             ViewBag.PasswordInvalid = false;
             ViewBag.UserAlreadyExists = false;
             ViewBag.CreationFailed = false;
+            ViewBag.Success = false;
 
             if (!ModelState.IsValid)
             {
@@ -57,7 +63,10 @@ namespace HWPLoginControl.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("Created");
+            ViewBag.Success = true;
+
+            return View(new CreateAccount());
+            //return RedirectToAction("Created");
         }
 
         public IActionResult Created()
@@ -69,10 +78,11 @@ namespace HWPLoginControl.Controllers
         {
             ViewBag.Failed = false;
             ViewBag.PasswordInvalid = false;
+            ViewBag.Success = false;
 
             if (String.IsNullOrEmpty(token)) return NotFound();
 
-            var email = "22@22.22";
+            var email = "fakeemail@fakeemail.fakeemail";
             var tempEmail = _accountService.GetEmailFromString(token);
             if (String.IsNullOrEmpty(tempEmail)) return NotFound();
             if (_accountService.IsValidEmail(tempEmail)) email = tempEmail;
@@ -87,6 +97,7 @@ namespace HWPLoginControl.Controllers
         {
             ViewBag.Failed = false;
             ViewBag.PasswordInvalid = false;
+            ViewBag.Success = false;
 
             if (!ModelState.IsValid) return View(model);
 
@@ -102,13 +113,14 @@ namespace HWPLoginControl.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("Created");
+            var returnModel = new ForgottenPassword();
+            returnModel.Email = "fakeemail@fakeemail.fakeemail";
+            ViewBag.Success = true;
+            return View(returnModel);
         }
 
         public IActionResult ForgottenPasswordEmail()
         {
-            ViewBag.InvalidEmail = false;
-            ViewBag.TempLink = "";
             ViewBag.Sent = false;
             return View();
         }
@@ -116,22 +128,30 @@ namespace HWPLoginControl.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgottenPasswordEmail(ForgottenPasswordEmail model)
         {
-            ViewBag.InvalidEmail = false;
-            ViewBag.TempLink = "";
             ViewBag.Sent = false;
 
             if (!ModelState.IsValid) return View(model);
 
-            //if (!await _accountService.UserAlreadyExists(model.Email))
-            //{
-            //    ViewBag.InvalidEmail = true;
-            //    return View(model);
-            //}
+            if (!await _accountService.UserAlreadyExists(model.Email))
+            {
+                ViewBag.Sent = true;
+                return View(model);
+            }
+
+#if DEBUG
+            var link = "https://localhost:7293/Login/ForgottenPassword?token=";
+
+#else
+            var link = "https://hwplogin.azurewebsites.net/Login/ForgottenPassword?token=";
+
+#endif
 
             var urlstring = _accountService.GetForgottenPasswordToken(model.Email);
-            ViewBag.TempLink = urlstring;
-            ViewBag.Sent = true;
+            link += urlstring;
 
+            _emailService.SendForgottenPasswordEmail(model.Email, link);
+
+            ViewBag.Sent = true;
             return View(model);
         }
     }

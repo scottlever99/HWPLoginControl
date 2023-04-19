@@ -16,6 +16,12 @@ namespace HWPLoginControl.Controllers
         public IActionResult Index()
         {
             return RedirectToAction("Create", "Login");
+            //return RedirectToAction("EmailTemplate");
+        }
+
+        public IActionResult EmailTemplate()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

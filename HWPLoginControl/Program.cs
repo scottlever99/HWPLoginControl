@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<EncryptionService>();
+builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<IDataAccess, DataAccess>();
 
 var app = builder.Build();
