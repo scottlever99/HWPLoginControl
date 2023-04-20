@@ -16,6 +16,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Work\Source Control\HWPLoginControl\HWPLoginControl
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Work/Source Control/HWPLoginControl/HWPLoginControl/Views/Activate/Account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZhdGVcQWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Work/Source Control/HWPLoginControl/HWPLoginControl/Views/Activate/Activated.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZhdGVcQWN0aXZhdGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Work/Source Control/HWPLoginControl/HWPLoginControl/Views/Activate/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZhdGVcUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Work/Source Control/HWPLoginControl/HWPLoginControl/Views/Activate/PaymentRedirect.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZhdGVcUGF5bWVudFJlZGlyZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Work/Source Control/HWPLoginControl/HWPLoginControl/Views/Activate/Promo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZhdGVcUHJvbW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Work/Source Control/HWPLoginControl/HWPLoginControl/Views/Home/EmailTemplate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbWFpbFRlbXBsYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

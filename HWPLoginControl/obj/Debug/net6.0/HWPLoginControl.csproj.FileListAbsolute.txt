@@ -43,7 +43,6 @@ C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\System.D
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\System.Security.Permissions.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\System.Windows.Extensions.dll
-C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win-x64\native\comerr64.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win-x64\native\gssapi64.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win-x64\native\k5sprt64.dll
@@ -54,10 +53,6 @@ C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\obj\Debug\net6.0\HWPLoginControl.csproj.CopyComplete
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -73,3 +68,10 @@ C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Azure.Co
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Azure.Core.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\Stripe.net.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Work\Source Control\HWPLoginControl\HWPLoginControl\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll

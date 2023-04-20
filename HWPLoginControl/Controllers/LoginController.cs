@@ -63,10 +63,13 @@ namespace HWPLoginControl.Controllers
                 return View(model);
             }
 
+            int userId = 0;
+            var user = await _accountService.GetUser(model.Email);
+            if (user != null) userId = user.id;
+
             ViewBag.Success = true;
 
-            return View(new CreateAccount());
-            //return RedirectToAction("Created");
+            return RedirectToAction("Account", "Activate", new { id = userId });
         }
 
         public IActionResult Created()
@@ -138,13 +141,9 @@ namespace HWPLoginControl.Controllers
                 return View(model);
             }
 
-#if DEBUG
-            var link = "https://localhost:7293/Login/ForgottenPassword?token=";
-
-#else
+//            var link = "https://localhost:7293/Login/ForgottenPassword?token=";
             var link = "https://hwplogin.azurewebsites.net/Login/ForgottenPassword?token=";
 
-#endif
 
             var urlstring = _accountService.GetForgottenPasswordToken(model.Email);
             link += urlstring;

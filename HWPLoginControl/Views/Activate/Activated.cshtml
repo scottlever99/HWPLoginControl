@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Activate";
+    bool success = ViewBag.Success;
+    string name = ViewBag.Name;
+}
+
+<div class="divwrapper" style="display:flex; justify-content: center; margin-top:50px">
+    <div class="form">
+        @if (success)
+        {
+            <div class="title">Account Activated!</div>
+            <div class="subtitle">@name, thank you for choosing HWP!</div>
+        }
+        else
+        {
+            <div class="title">Failed To Activate!</div>
+            <div class="subtitle">
+                It seems there was an error in activating your account!<br>
+                To resolve the issue, contact: hwpCustomerServiceEmail@gmail.com
+            </div>
+        }
+    </div>
+</div>

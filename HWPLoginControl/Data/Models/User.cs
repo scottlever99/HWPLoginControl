@@ -8,5 +8,7 @@
         public string email { get; set; }
         public string password { get; set; }
         public int age { get; set; }
+        public int enabled { get; set; }
+        public int gateway { get; set; }
     }
 }

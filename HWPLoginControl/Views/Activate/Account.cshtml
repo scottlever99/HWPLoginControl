@@ -1,0 +1,19 @@
+﻿@model ActivateModel
+@{
+    ViewData["Title"] = "Activate";
+}
+
+<div class="divwrapper" style="display:flex; justify-content: center; margin-top:50px">
+    <div class="form">
+            @Html.AntiForgeryToken()
+            <div class="title">Activation</div>
+            <div class="subtitle">Let's activate your account!</div>
+
+        <form action="@Url.Action("Promo", "Activate", new { id = Model.id })">
+            <input type="submit" class="submit" value="Promo Code" />
+        </form>
+        <form action="@Url.Action("Payment", "Activate", new { id = Model.id })">
+            <input type="submit" class="submit" value="Payment" />
+        </form>
+    </div>
+</div>

@@ -1,10 +1,6 @@
 ﻿using HWPLoginControl.Data;
 using HWPLoginControl.Data.Models;
 using HWPLoginControl.Models;
-using Org.BouncyCastle.Utilities.Encoders;
-using System.Globalization;
-using System.Text;
-using System.Web;
 
 namespace HWPLoginControl.Services
 {
@@ -17,6 +13,60 @@ namespace HWPLoginControl.Services
         {
             _dbAccess = dbAccess;
             _encryptionService = encryptionService;
+        }
+
+        public async Task<User?> GetUser(int id)
+        {
+            try
+            {
+                var result = (await _dbAccess.LoadData<User, dynamic>("SELECT * FROM user WHERE id = @Id", new { Id = id })).FirstOrDefault();
+                return result;
+            }
+            catch
+            {
+                return new User();
+            }
+        }
+
+        public async Task<User?> GetUser(string email)
+        {
+            try
+            {
+                var result = (await _dbAccess.LoadData<User, dynamic>("SELECT * FROM user WHERE email = @Email", new { Email = email })).FirstOrDefault();
+                return result;
+            }
+            catch
+            {
+                return new User();
+            }
+        }
+
+        public async Task<bool> EnableUser(int id, int gateway)
+        {
+            try
+            {
+                var result = await _dbAccess.SaveData("UPDATE user SET enabled = 1, gateway = @Gateway WHERE id = @Id", new { Id = id, Gateway = gateway });
+                return result > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> UserEnabled(int id)
+        {
+            try
+            {
+                var result = (await _dbAccess.LoadData<User, dynamic>("SELECT * FROM user WHERE id = @Id", new { Id = id })).FirstOrDefault();
+                if (result == null) return false;
+                if (result.enabled == 1) return true;
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public async Task<bool> UserAlreadyExists(string email)
@@ -40,18 +90,17 @@ namespace HWPLoginControl.Services
         {
             try
             {
-                var result = await _dbAccess.SaveData<dynamic>("INSERT INTO user (firstname, lastname, email, password, age) VALUES (@FirstName, @LastName, @Email, @Password, @Age)", 
-                    new 
-                    { 
+                var result = await _dbAccess.SaveData<dynamic>("INSERT INTO user (firstname, lastname, email, password) VALUES (@FirstName, @LastName, @Email, @Password)",
+                    new
+                    {
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         Email = model.Email,
-                        Password = model.Password,
-                        Age = 0
+                        Password = model.Password
                     });
 
                 if (result < 1) return false;
-                
+
                 return true;
             }
             catch
